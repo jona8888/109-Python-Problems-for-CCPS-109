@@ -260,7 +260,7 @@ def safe_squares_rooks(n, rooks):
                         count = count + 1
         return count
 
-  def words_with_given_shape(words, shape):
+def words_with_given_shape(words, shape):
     res = []
     temp = []
     def shapeNum(current, after):
