@@ -280,3 +280,24 @@ def words_with_given_shape(words, shape):
                     res.append(word)
                     break   
     return(res)
+
+def is_left_handed(pips):
+    valid = ""
+    original = True
+    sum7 = 7
+    
+    for i in range(len(pips)):
+        if pips[i] > 3:
+            pips[i] = sum7 - pips[i]
+            original = not original
+    
+    validPips = [[1,2,3],[2,3,1],[3,1,2]]
+    if pips in validPips:
+        valid =  True
+    else:
+        valid = False 
+           
+    if (valid and original) or (not valid and not original):
+        return True
+    return False
+
