@@ -301,3 +301,28 @@ def is_left_handed(pips):
         return True
     return False
 
+def trumpExist(cards, trump):
+    lst = []
+    for card in cards:
+        if card[1] == trump:
+            lst.append(card)
+    return lst
+    
+def winning_card(cards, trump=None):
+    if trump == None or len(trumpExist(cards, trump)) == 0:
+        trump = cards[0][1]
+    trumpLst = trumpExist(cards, trump)
+    
+    suitNums = {"ace": 14, "king": 13, "queen": 12, "jack": 11, 
+    "ten": 10, "nine": 9, "eight": 8, "seven": 7, "six": 6, 
+    "five": 5, "four": 4 , "three": 3, "two": 2, "one": 1}
+    
+    best = trumpLst[0]
+    bigNum = suitNums[trumpLst[0][0]]
+    for card in trumpLst:
+        if suitNums[card[0]] > bigNum:
+            bigNum = suitNums[card[0]]
+            best = card
+            
+    return best
+
